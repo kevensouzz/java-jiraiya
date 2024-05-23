@@ -60,8 +60,8 @@ Dentro da classe teremos nosso método `main` que simplesmente printará `KA-ME 
 ```
 
 Ok! feito isso, nosso exemplo está pronto, agora só resta:
-- usar o JAVAC para compilar nosso arquivo .java para bitcode ou (código binário), que terá a extensão .class
-- usar a JVM para rodar o arquivo com o bitcode gerado pelo compilador
+- usar o JAVAC para compilar nosso arquivo .java para bytecode ou (código binário), que terá a extensão .class
+- usar a JVM para rodar o arquivo com o bytecode gerado pelo compilador
 
 
 ### compilando
@@ -76,7 +76,7 @@ Dessa forma, o compilador deve gerar um arquivo com o mesmo nome, mas com a exte
 
 ### executando
 
-Com o Código compilado para bitcodes, a JVM já pode ler o conteúdo deste arquivo.
+Com o Código compilado para bytecodes, a JVM já pode ler o conteúdo deste arquivo.
 para isso, usamos o comando `java` no console do terminal:
 
 ```sh
