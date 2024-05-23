@@ -12,7 +12,7 @@ No mundo da computação existe diversos sistemas operacionais (software que se 
 
 O que faz o java ser conhecido por essa frase é a sua Máquina Virtual, a JVM (Java Virtual Machine) que é responsavel por fazer os programas em java **NÃO** rodar diretamente no sistema operacional desta forma não precisando de um códiga para cada OS (Sistema Operacional).
 
-![wrong example](wrong%20example.png)
+![wrong example](images/wrong%20example.png)
 
 ### (OBS) Isso não quer dizer que tenha uma JVM universal, para todos os OS...
 
@@ -26,4 +26,4 @@ Tornando a seguinte forma de funcionamento do java
 2. Os binários são interpretado nativamente pela JVM.
 3. Aplicação é executada em qualquer outro OS pelo JRE (Java Runtime Environment) que também compõe o JDK.
 
-![correct example](correct%20example.png)
+![correct example](images/correct%20example.png)
