@@ -35,7 +35,7 @@ Não muito diferente das outras linguagens, o java tem 3 tipos de comentários:
 
 Não é recomendado encher o código de comentários, segundo o livro Clean Code, pois o seu código deve ser legível o suficiente para não precisar de comentários, mas isso não é uma regra...
 
-Já os comentários `Javadoc` são um pouco diferente... esses são os comentários de documentação, quando você passa o mouse ou presiona `ctrl + Q` na função println do java, por exemplo, é exibido na tela algumas instruções sobre essa função, navegando até o código dessa função por `ctrl + click`, se deparamos com os mesmos comentários javadoc que foram exibidos ao pressionar `ctrl + Q` na função. Logo, esse tipo de comentário é julgado até necessário para as classes públicas do seu código.
+Já os comentários `Javadoc` são um pouco diferente... esses são os comentários de documentação, quando você passa o mouse ou presiona `ctrl + Q` na função println do java, por exemplo, é exibido na tela algumas instruções sobre essa função, navegando até o código dessa função por `ctrl + click`, se deparamos com os mesmos comentários javadoc que foram exibidos ao pressionar `ctrl + Q` na função. Logo, esse tipo de comentário é julgado até necessário para os métodos públicos do seu código.
 
 ----------
 ### CTRL + Q
