@@ -10,7 +10,7 @@ No mundo da computação existe diversos sistemas operacionais (software que se 
 - MacOS
 - Distros do Linux(Kernel)
 
-O que faz o java ser conhecido por essa frase é a sua Máquina Virtual, a JVM (Java Virtual Machine) que é responsavel por fazer os programas em java **NÃO** rodar diretamente no sistema operacional desta forma não precisando de um códiga para cada OS (Sistema Operacional).
+O que faz o java ser conhecido por essa frase é a sua Máquina Virtual, a JVM (Java Virtual Machine) que é responsavel por fazer os programas em java **NÃO** rodar diretamente no sistema operacional, desta forma não precisando de um códiga para cada OS (Sistema Operacional).
 
 ![wrong example](images/wrong%20example.png)
 
@@ -22,8 +22,10 @@ A JVM pode ser facilmente instalada pelo navegador, uma abordagem muito comúm e
 
 Tornando a seguinte forma de funcionamento do java
 
-1. código fonte java é compilado para binário pelo JAVAC (Java Compiler).
-2. Os binários são interpretado nativamente pela JVM.
+1. código fonte java é compilado para bytecode pelo JAVAC (Java Compiler).
+2. Os bytecode são interpretado nativamente pela JVM.
 3. Aplicação é executada em qualquer outro OS pelo JRE (Java Runtime Environment) que também compõe o JDK.
+
+Desta forma tornando o `java`, **não irônicamente**, uma linguagem compilada e interpretada ao mesmo tempo.
 
 ![correct example](images/correct%20example.png)

@@ -1,6 +1,6 @@
 # convenções de variaveis
 
-[TiposPrimitivos02.java](../maratona-java/src/me/kevensouza/maratonajava/intro/TiposPrimitivos02.java)
+[ConvençõesDeVariaveis02.java](../maratona-java/src/me/kevensouza/maratonajava/intro/ConvencoesDeVariaveis02.java)
 
 Tipos primitivos armazenam valores simples em memória.
 
