@@ -56,3 +56,25 @@ public class RunPerson {
     }
 }
 ```
+
+----------
+
+### Coesão
+
+Em Orientação a Objetos, Coesão de classes é algo muito importante, no desenvolvimento/manutenção de um sistema faz total diferença em relação a escalabilidade e legibilidade.
+
+Coesão de classe seria o cuidado para que as classes de uma aplicação não misture seus propósitos de existir, exemplos:
+
+```java
+public class Estudante {
+  public String nome;
+  public short idade;
+  public char sexo;
+}
+```
+
+O propósito da classe acima é referenciar `Estudantes`, nada mais, não faria sentido, por exemplo, os atributos: `nomeProfessor, idadeProfessor, sexoProfessor`.
+<br />
+Ou até mesmo um `método main`.
+
+Se o propósito da classe é referenciar Estudantes, ela não deve fazer nada mais que isso.
