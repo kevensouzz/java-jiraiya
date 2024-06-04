@@ -1,6 +1,6 @@
-package me.kevensouza.maratonajava.core.intro.classes.student20.test;
+package me.kevensouza.maratonajava.core.classes.student15.test;
 
-import me.kevensouza.maratonajava.core.intro.classes.student20.domain.Student;
+import me.kevensouza.maratonajava.core.classes.student15.domain.Student;
 
 public class StudentTest {
     public static void main(String[] args) {

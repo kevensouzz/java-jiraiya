@@ -1,6 +1,6 @@
-package me.kevensouza.maratonajava.core.intro.classes.carro21;
+package me.kevensouza.maratonajava.core.classes.carro16;
 
-import me.kevensouza.maratonajava.core.intro.classes.carro21.domain.Carro;
+import me.kevensouza.maratonajava.core.classes.carro16.domain.Carro;
 
 public class Main {
     public static void main(String[] args) {

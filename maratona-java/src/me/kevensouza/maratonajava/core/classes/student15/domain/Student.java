@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.core.intro.classes.student20.domain;
+package me.kevensouza.maratonajava.core.classes.student15.domain;
 
 public class Student {
     public String nome;

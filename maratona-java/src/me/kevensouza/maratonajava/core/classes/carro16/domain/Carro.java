@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.core.intro.classes.carro21.domain;
+package me.kevensouza.maratonajava.core.classes.carro16.domain;
 
 public class Carro {
     public String nome;

@@ -1,6 +1,6 @@
 # Classes - Exercício
 
-[Carro21](../maratona-java/src/me/kevensouza/maratonajava/core/intro/classes/carro21/)
+[Carro16](../maratona-java/src/me/kevensouza/maratonajava/core/classes/carro16/)
 
 Criar uma classe `Carro` com os atributos `nome, modelo e ano`, criar dois objetos da classe e imprimir os valores.
 
