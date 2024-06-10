@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.core.classes.employees21.domain;
+package me.kevensouza.maratonajava.core.methods.employees21.domain;
 
 import java.math.BigDecimal;
 

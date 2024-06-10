@@ -1,6 +1,6 @@
-package me.kevensouza.maratonajava.core.classes.pessoa22;
+package me.kevensouza.maratonajava.core.methods.pessoa22;
 
-import me.kevensouza.maratonajava.core.classes.pessoa22.domain.Pessoa;
+import me.kevensouza.maratonajava.core.methods.pessoa22.domain.Pessoa;
 
 public class Main {
     public static void main(String[] args) {

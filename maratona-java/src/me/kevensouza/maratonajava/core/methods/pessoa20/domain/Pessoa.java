@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.core.classes.pessoa20.domain;
+package me.kevensouza.maratonajava.core.methods.pessoa20.domain;
 
 public class Pessoa {
     private String nome;

@@ -1,8 +1,7 @@
-package me.kevensouza.maratonajava.core.classes.employees21;
+package me.kevensouza.maratonajava.core.methods.employees21;
 
-import me.kevensouza.maratonajava.core.classes.employees21.domain.Employee;
+import me.kevensouza.maratonajava.core.methods.employees21.domain.Employee;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
