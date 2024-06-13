@@ -36,3 +36,22 @@ Esse é um exemplo de associação bidirecional, acessando o link do topo, se en
 
 - bidirecional (**muitos para muitos**)
 - unidirecional (**um para muitos** ou **muitos para um** ou **um para um**)
+
+## Exercício
+
+[Resolução do Exercício de Associação | Seminário](../maratona-java/src/me/kevensouza/maratonajava/core/association/seminario31/)
+
+Criar um sistema de gerenciamento de seminaŕios cumprindo os seguintes requisitos:
+
+- cadastrar `seminários`, `alunos`, `professores` e `local` do seminário
+- Um aluno poderá estar em apenas um seminário
+- um seminário poderá ter vários alunos
+- um professor poderá ter vários seminários
+- um seminário deve rer um local
+
+campos básicos (excluindo relacionamento):
+
+- seminário: título
+- aluno: nome e idade
+- profesor: nome e especialidade
+- local: endereço
