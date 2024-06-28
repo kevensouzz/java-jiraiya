@@ -1,25 +1,25 @@
 package me.kevensouza.maratonajava.core.enums.cliente36.domain;
 
+import me.kevensouza.maratonajava.core.enums.cliente36.domain.enumerations.TipoCliente;
+import me.kevensouza.maratonajava.core.enums.cliente36.domain.enumerations.TipoPagamento;
+
 public class Cliente {
     private String nome;
-    private TipoCliente tipo;
+    private TipoCliente tipoCliente;
+    private TipoPagamento tipoPagamento;
 
-//    public static final String PESSOA_FISICA =  "PESSOA_FISICA";
-//    public static final String PESSOA_JURIDICA =  "PESSOA_JURIDICA";
-
-    public Cliente(String nome, TipoCliente tipo) {
-//        if (!tipo.equals(PESSOA_FISICA) && !tipo.equals(PESSOA_JURIDICA)) {
-//            return;
-//        }
+    public Cliente(String nome, TipoCliente tipoCliente, TipoPagamento tipoPagamento) {
         this.nome = nome;
-        this.tipo = tipo;
+        this.tipoCliente = tipoCliente;
+        this.tipoPagamento = tipoPagamento;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
                 "nome='" + nome + '\'' +
-                ", tipo='" + tipo + '\'' +
+                ", tipoCliente=" + tipoCliente +
+                ", tipoPagamento=" + tipoPagamento +
                 '}';
     }
 
@@ -31,11 +31,19 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public TipoCliente getTipo() {
-        return tipo;
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
     }
 
-    public void setTipo(TipoCliente tipo) {
-        this.tipo = tipo;
+    public void setTipoCliente(TipoCliente tipo) {
+        this.tipoCliente = tipo;
+    }
+
+    public TipoPagamento getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(TipoPagamento tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
     }
 }
