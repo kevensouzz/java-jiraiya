@@ -1,7 +1,7 @@
-package me.kevensouza.maratonajava.core.classesabstratas.Funcionario;
+package me.kevensouza.maratonajava.core.classesabstratas.Funcionario37;
 
-import me.kevensouza.maratonajava.core.classesabstratas.Funcionario.domain.Gerente;
-import me.kevensouza.maratonajava.core.classesabstratas.Funcionario.domain.Seguranca;
+import me.kevensouza.maratonajava.core.classesabstratas.Funcionario37.domain.Gerente;
+import me.kevensouza.maratonajava.core.classesabstratas.Funcionario37.domain.Seguranca;
 
 public class Main {
     public static void main(String[] args) {

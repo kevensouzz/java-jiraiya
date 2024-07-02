@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.core.classesabstratas.Funcionario.domain;
+package me.kevensouza.maratonajava.core.classesabstratas.Funcionario37.domain;
 
 public class Gerente extends Funcionario {
 
