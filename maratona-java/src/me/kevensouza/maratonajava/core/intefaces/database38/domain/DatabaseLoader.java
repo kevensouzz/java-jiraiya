@@ -1,6 +1,5 @@
 package me.kevensouza.maratonajava.core.intefaces.database38.domain;
 
-
 import me.kevensouza.maratonajava.core.intefaces.database38.domain.interfaces.DataLoader;
 import me.kevensouza.maratonajava.core.intefaces.database38.domain.interfaces.DataRemover;
 
