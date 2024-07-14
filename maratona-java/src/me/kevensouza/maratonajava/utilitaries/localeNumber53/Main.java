@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.utilitaries.localeNumber52;
+package me.kevensouza.maratonajava.utilitaries.localeNumber53;
 
 import java.text.NumberFormat;
 import java.util.Locale;

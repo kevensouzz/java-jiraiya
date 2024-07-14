@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.utilitaries.localeCountries51;
+package me.kevensouza.maratonajava.utilitaries.localeCountries52;
 
 import java.util.Locale;
 

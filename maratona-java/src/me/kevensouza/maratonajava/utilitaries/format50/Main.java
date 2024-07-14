@@ -1,7 +1,6 @@
-package me.kevensouza.maratonajava.utilitaries.format49;
+package me.kevensouza.maratonajava.utilitaries.format50;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Main {
