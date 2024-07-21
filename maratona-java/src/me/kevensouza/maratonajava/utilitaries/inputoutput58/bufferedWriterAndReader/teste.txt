@@ -1,0 +1,3 @@
+Escrevendo uma mensagem no arquivo!!!
+Usando o System.lineSeparator ao invés do /n.
+e o método newLine() do BufferedWriter também kkkkkkkk
