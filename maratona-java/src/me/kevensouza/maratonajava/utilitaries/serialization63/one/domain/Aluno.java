@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.utilitaries.serialization62.one.domain;
+package me.kevensouza.maratonajava.utilitaries.serialization63.one.domain;
 
 import java.io.Serializable;
 

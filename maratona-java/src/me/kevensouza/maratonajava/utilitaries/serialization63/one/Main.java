@@ -1,6 +1,6 @@
-package me.kevensouza.maratonajava.utilitaries.serialization62.one;
+package me.kevensouza.maratonajava.utilitaries.serialization63.one;
 
-import me.kevensouza.maratonajava.utilitaries.serialization62.one.domain.Aluno;
+import me.kevensouza.maratonajava.utilitaries.serialization63.one.domain.Aluno;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

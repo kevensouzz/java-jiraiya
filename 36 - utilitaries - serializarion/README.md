@@ -1,5 +1,7 @@
 # Serialization
 
+[Serialization](../maratona-java/src/me/kevensouza/maratonajava/utilitaries/serialization63/)
+
 Serialização é a função de pegar um derminado objeto em memória e persistir ele, seja num banco de dadas, arquivo, ou seja lá o que for.
 Nessa aula vamos persistir em um arquivo e em seguida ler o mesmo.
 
