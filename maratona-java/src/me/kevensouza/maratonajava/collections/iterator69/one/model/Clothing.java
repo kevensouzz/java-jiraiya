@@ -15,6 +15,14 @@ public class Clothing implements Comparator<Clothing> {
     private Short quantity;
     private List<Sizes> availableSizes;
 
+    public Clothing(ClothingType clothingType, Brand brand, Double price, Short quantity, Sizes... availableSizes) {
+        this.clothingType = clothingType;
+        this.brand = brand;
+        this.price = price;
+        this.quantity = quantity;
+        this.availableSizes = List.of(availableSizes);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -26,14 +34,6 @@ public class Clothing implements Comparator<Clothing> {
     @Override
     public int hashCode() {
         return Objects.hash(getClothingType(), getBrand(), getPrice(), getQuantity(), getAvailableSizes());
-    }
-
-    public Clothing(ClothingType clothingType, Brand brand, Double price, Short quantity, Sizes... availableSizes) {
-        this.clothingType = clothingType;
-        this.brand = brand;
-        this.price = price;
-        this.quantity = quantity;
-        this.availableSizes = List.of(availableSizes);
     }
 
     @Override
