@@ -1,4 +1,4 @@
-package me.kevensouza.maratonajava.internalClasses.localClasses74;
+package me.kevensouza.maratonajava.internal.classes.localClasses74;
 
 public class Outer {
     private String name = "Keven";
