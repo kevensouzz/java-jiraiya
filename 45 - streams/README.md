@@ -56,3 +56,59 @@ vamos ver como podemos fazer isso com e sem o uso de `Streams`:
                 .limit(3)
                 .forEach(System.out::println);
 ```
+
+## Métodos Stream
+
+A Stream API tem outros métodos cujo são considerados geralmente como métodos `intermediários`, `finais` ou `estáticos`, onde **intermediários** são os que retornam um novo Stream, permitindo o encadeamento de operações. Métodos *intermediários* não consomem a Stream original, somente transformam ou filtram os dados para que sejam processados posteriormente. são exemplos de métodos intermediários da Stream API:
+
+- filter()
+- map()
+- flatMap()
+- distinct()
+- sorted()
+- etc...
+
+Os métodos **finais** são justamente os métodos que consomem a Stream e retornam um resultado final das operações usadas. Exemplos:
+
+- forEach()
+- collect()
+- reduce()
+- toArray()
+- count()
+- etc...
+
+E por final, os métodos estáticos da classe Stream, que são usados para criar streams...
+
+- Stream.of()
+- Stream.iterate()
+- Stream.generate()
+- Stream.concat()
+
+----------
+
+A seguir veremos exemplos sobre alguns dos métodos Stream.
+
+### FlatMap
+
+`FlatMap` é um intermediário faz a mesma coisa que o `Map` faz (recebe um método (geralmente anônimo) como argumento para aplicar para cada elemento de uma coleção, por exemplo), com a seguinte diferença: o `FlatMap()` tem a funcionalidade de aninhar/achatar a coleção passada. Exemplo:
+
+Imagine que você tem uma Lista de Listas (como um array multidimensional) de Strings e deseja aplicar um determinado método para cada uma das strings de todas essas listas.
+
+como fariamos sem Stream() e sem flatMap()
+
+```java
+        for (List<String> strings : stringsLists) {
+            for (String subStrings : strings) {
+                System.out.println(subStrings.toLowerCase());
+            }
+        }
+```
+
+Como fazemos com FlatMap()
+
+```java
+        stringsLists.stream()
+                // retornará uma Stream<String> para o forEach() || o que seria diferente se usassemos o map(), pois retornaria Stream<Stream<String>>
+                .flatMap(Collection::stream)
+                .forEach(s -> System.out.println(s.toLowerCase()));
+```
