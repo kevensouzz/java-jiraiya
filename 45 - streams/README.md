@@ -112,3 +112,49 @@ Como fazemos com FlatMap()
                 .flatMap(Collection::stream)
                 .forEach(s -> System.out.println(s.toLowerCase()));
 ```
+
+### Reduce
+
+Um método terminal da Stream API, que possibilita a obtenção de um único resultado a partir de uma sequencia/coleção de elementos, como por exemplo: *somando todos os números de uma lista de inteiros*
+
+```java
+        numbers.stream()
+            .reduce(Integer::sum)
+            .ifPresent(System.out::println);
+```
+
+## Gerando Streams
+
+Até o momento só foram usados Streams sob coleçẽs, e essas são as outras formas de inicializar um Stream:
+
+Stream usado pra manter os valores primitivos:
+
+**IntStream**
+**DoubleStream**
+
+```java
+    // example (0, 50) -> 0 - 49 (excluisve)
+    IntStream.range();
+    // example (0, 50) -> 0 - 50 (inclusive)
+    IntStream.rangeClosed();
+```
+
+----------
+
+**Stream.of()**
+
+```java
+    // recebe um VarArgs de <T> (qualquer coisa)
+    Stream.of();
+```
+
+----------
+
+**Arrays.stream()**
+
+```java
+    int[] nums = {0, 1, 2, 3, 4, 5};
+    Arrays.stream(nums).average().ifPresent(System.out::println);
+```
+
+## Collectors
