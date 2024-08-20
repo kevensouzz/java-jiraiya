@@ -158,3 +158,66 @@ Stream usado pra manter os valores primitivos:
 ```
 
 ## Collectors
+
+É um framework da Stream API onde facilita os próprios métodos da Stream API como também extende o seu repertório de funcionalidades com alguns métodos interessantes, como por exemplo:
+
+Summarizing()
+```java
+        // cria estatísticas baseadas numa coleção de dados, nesse exemplo foram usados os preços dos objs LightNovel.
+        DoubleSummaryStatistics summaryStatistics = lightNovels.stream().collect(Collectors.summarizingDouble(LightNovel::getPrice));
+        System.out.println(summaryStatistics);
+```
+
+Joining()
+```java
+        // cria formatação de texto com delimitador, a sáida desse código será uma lista de todos os títulos de LightNovels da coleção delimitado por ", ".
+        String titlesJoining = lightNovels.stream().map(LightNovel::getTitle).collect(Collectors.joining(", "));
+        System.out.println(titlesJoining);
+```
+
+### Grouping By
+
+Agora sobre Agrupamentos, ainda na parte de Collectors.
+
+Vamos Agrupar objetos por categorias. Temos as seguintes categorias de Light Novels (drama, fantasia e romance) e para cada categoria devemos ter uma Lista com os respectivos Light Novels.
+
+#### Sem o uso de Streams
+
+```java
+        Map<Category, List<LightNovel>> groupByCategory = new HashMap<>();
+
+        // without streams
+        List<LightNovel> fantasyLightNovels = new ArrayList<>();
+        List<LightNovel> dramaLightNovels = new ArrayList<>();
+        List<LightNovel> romanceLightNovels = new ArrayList<>();
+
+        // caso seja adicionada uma nova categoria, a seleção dos respectivos objetos terão que ser manualmente implementadas.
+
+        for (LightNovel lightNovel : lightNovels) {
+            switch (lightNovel.getCategory()) {
+                case FANTASY:
+                    fantasyLightNovels.add(lightNovel);
+                    break;
+
+                case DRAMA:
+                    dramaLightNovels.add(lightNovel);
+                    break;
+
+                case ROMANCE:
+                    romanceLightNovels.add(lightNovel);
+                    break;
+            }
+        }
+
+        groupByCategory.put(Category.FANTASY, fantasyLightNovels);
+        groupByCategory.put(Category.DRAMA, dramaLightNovels);
+        groupByCategory.put(Category.ROMANCE, romanceLightNovels);
+```
+
+#### Com Streams
+
+```java
+    private static void groupWithStreams(Map<Category, List<LightNovel>> groupByCategory) {
+        groupByCategory = lightNovels.stream().collect(Collectors.groupingBy(LightNovel::getCategory));
+    }
+```
