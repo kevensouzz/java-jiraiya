@@ -111,3 +111,62 @@ Bem, vamos ver a forma menos errada de criar uma thread no java, como falei acim
 ```
 
 ![alt](./img/threadRunnable.png)
+
+## Estados das Threads
+
+As Threads podem ter os seguintes estados:
+
+`new`>`Runnable`>`Running`>(`Blocked/Waiting`>`Runnable` | `Dead`)
+
+Quando uma Thread está rodando ela pode morrer, quando seu processo for finalizado (ou alguma exceção) ou ela pode (ser bloqueada ou receber um timeout). Enquanto a thread está em timeout ela pode voltar para o estado `Runnable` e seguir o seu ciclo novamente.
+
+Um detalhe importante, é que uma thread não pode ser bloqueada por outra thread, ela só pode ser bloqueada por decisão do Scheduler (Escalonador).
+
+### Prioridade e Sleep
+
+Além de nomear as thread pelo seu Setter ou Constructor, podemos definir a prioridade de execução com um numéro dependenendo da JVM. (algumas JVMs tem o nível de prioridade de 1 a 10, outras de 1 a 15...), mas a forma mais recomendada é usando o Enum. Dessa forma:
+
+```java
+        Thread t1 = new Thread(new ThreadExampleRunnable('A'), "//-Amazing Thread--;/");
+        Thread t2 = new Thread(new ThreadExampleRunnable('B'), "//-Bullshit Thread--;/");
+        Thread t3 = new Thread(new ThreadExampleRunnable('C'), "//-Calm thread--;/");
+
+        t1.setPriority(Thread.MIN_PRIORITY);
+        t2.setPriority(Thread.NORM_PRIORITY);
+        t3.setPriority(Thread.MAX_PRIORITY);
+
+        t1.start();
+        t2.start();
+        t3.start();
+```
+
+Lembrando, isso é uma indicação para o Scheduler... Não uma ordem!
+
+----------
+
+Agora falando sobre o `Sleep()`, é uma das poucas "instruções" a JVM em relação a threads que ela certamente vai acatar.
+
+Como Citei anteriormente, uma thread não pode colocar outra pra dormir, tanto é que o `sleep()` é um método estático e só é usado dentro do método `run()` que é sobrescrito, dessa forma:
+
+```java
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+        for (int i = 0; i < 500; i++) {
+            System.out.print(c);
+            if (i % 100 == 0) {
+                System.out.println();
+            }
+            
+            // pode lançar uma exceção, então deve ser cercado por try catch, não é possível passar a responsabilidade para o `run()`, pois ele é sobrecarregado.
+            try {
+                // recebe milissegundos como parâmetro.
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            
+        }
+        System.out.println('\n');
+    }
+```
