@@ -221,3 +221,115 @@ Vamos Agrupar objetos por categorias. Temos as seguintes categorias de Light Nov
         groupByCategory = lightNovels.stream().collect(Collectors.groupingBy(LightNovel::getCategory));
     }
 ```
+
+## Streams paralelas
+
+Uma forma interessante de aproveitar as Threads da máquina é usando o paralelismo ao nosso favor. A partir de agora vamos ver como o Java conseguiu abstrair a complexidade de desenvolver códigos que rodam de forma paralelas.
+
+Usando o método `getRuntime()` da classe `Runtime` é possível acessar algumas informações da máquina qual está sendo rodado o nosso projeto Java. Como: `free | max | total - Memory()`, `availableProcessors()`, etc...
+
+Rodando o método `Runtime.getRuntime().availableProcessors()`, podemos ver quantas threads da máquina estão disponíveis
+
+----------
+
+Ok, vamos começar por um exemplo de onde não se deve usar streams paralelas:
+
+temos 3 métodos, cujo objetivo somar dois números que iniciam em 0, um desses números seria um "marcador de iteração", enquanto o outro é um atributo de tipo long do método.
+
+cada método tem um diferencial
+
+1. usa for
+2. usa Stream Iterate
+3. também usa Stream Iterate, mas com o método Parallel() que faz com que seja usado mais de uma thread (se possível).
+
+```java
+    private static void sumFor(long num) {
+        long res = 0;
+
+        long init = System.currentTimeMillis();
+        for (long i = 0; i <= num; i++) {
+            res += i;
+        }
+        long end = System.currentTimeMillis();
+
+        System.out.println((end - init) + "ms");
+    }
+```
+
+```java
+    private static void sumStreamIterate(long num) {
+        long res = 0;
+
+        long init = System.currentTimeMillis();
+        Stream.iterate(1l, i -> i += 1).limit(num).reduce(0L, Long::sum);
+        long end = System.currentTimeMillis();
+
+        System.out.println((end - init) + "ms");
+    }
+```
+
+```java
+    private static void sumParallelStream(long num) {
+        long res = 0;
+
+        long init = System.currentTimeMillis();
+        Stream.iterate(1l, i -> i += 1).parallel().limit(num).reduce(0L, Long::sum);
+        long end = System.currentTimeMillis();
+
+        System.out.println((end - init) + "ms");
+    }
+```
+
+Executando cada um desses métodos passando como argumento `999_99` 5 vezes essa foi a média de tempo levado pra executar os métodos em Milissegundos.
+
+1. 36,8ms
+2. 23,4ms
+3. 2,4
+
+Nesse caso, o for deu uma surra nas Streams, afinal o laço `For` definitivamente foi projetado pra esse tipo de caso de uso.
+
+Um dos motivos pelo qual o Stream Iterate não tenha sido tão performático é o fato de que é necessário fazer unboxing e autoboxing.
+<br>
+E o Principal motivo pelo qual o Stream Iterate com o método Parallel() ter sido pior ainda, é por que as informações passam para um escalonador para decidir qual thread vai ficar responsável por cada parte do processo, o que acaba se tornando não tão performático somado a necessidade de fazer unboxing e autoboxing.
+
+Mas isso não quer dizer que se deve descartar a Stream, há uma forma de trabalhar de forma bem mais eficiente. Se usarmos o LongStream e definirmos um range estático de iteração, o escalonador tem muito mais facilidade de definir o papel de cada thread, além de mitigar a necessidade de fazer unboxing e autoboxing.
+
+```java
+    private static void sumLongStream(long num) {
+        long res = 0;
+
+        long init = System.currentTimeMillis();
+        LongStream.rangeClosed(1L, num).reduce(0L, Long::sum);
+        long end = System.currentTimeMillis();
+
+        System.out.println((end - init) + "ms");
+    }
+```
+
+```java
+    private static void sumLongParallelStream(long num) {
+        long res = 0;
+
+        long init = System.currentTimeMillis();
+        LongStream.rangeClosed(1L, num).parallel().reduce(0L, Long::sum);
+        long end = System.currentTimeMillis();
+
+        System.out.println((end - init) + "ms");
+    }
+```
+
+![alt](./img/methodsCompare.png)
+
+### Quando devemos ou não utilizar parallel streams
+
+A melhor forma de saber se devemos utilizá-lo em determinada situação é fazendo `benchmarks`, seja com libs externas ou marcando o início e o fim do trecho de código, como fizemos nos exemplos anteriores.
+
+Outro detalhe é o custo de processamento de ter que fazer Boxing e Unboxing várias vezes. Pra isso existem os métodos `rangeClosed()` da classe `LongStream`, por exemplo.
+
+Alguns método não são projetados para uso paralelo, como: `limit e FindFirst`. Já outros são até mais interessantes paralelos, como: `FindAny`.
+
+Não compensa usar multiplas threads pra tarefas que exigem pouco processamento, pois já existe um custo consideravel de processamento pra recrutar multiplas threas para uma tarefa.
+
+Quando utilizando Streams sobre coleções, é recomendado pesquisar se realmente é interessante o paralelismo para a coleção usada, para algumas coleções o uso de multiplas threads não é tão performático, como `Listas Encadeadas`.
+
+E como visto nos exemplos acima, é interessante que o stream já tenha um tamanho definido para o uso paralelo. Pois caso não tenha o escalonador terá "dificuldade" para determinar o papel de cada thread em uma tarefa, tornando pouco performático.
