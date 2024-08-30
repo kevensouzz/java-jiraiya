@@ -3,8 +3,8 @@ package me.kevensouza.maratonajava.ADesignPatterns.BSingleton.BLazyInitializatio
 import java.util.HashSet;
 import java.util.Set;
 
-public class Aircraft {
-    private static final Aircraft INSTANCE = new Aircraft("737-900");
+public final class Aircraft {
+    private static Aircraft INSTANCE;
     private final Set<String> availableSeats = new HashSet<>();
     private final String name;
 
@@ -23,6 +23,15 @@ public class Aircraft {
     }
 
     public static Aircraft getInstance() {
+
+        if (INSTANCE == null) {
+            synchronized (Aircraft.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new Aircraft("737-900");
+                }
+            }
+        }
+
         return INSTANCE;
     }
 

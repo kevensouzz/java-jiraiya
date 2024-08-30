@@ -1,6 +1,6 @@
-package me.kevensouza.maratonajava.ADesignPatterns.BSingleton.A;
+package me.kevensouza.maratonajava.ADesignPatterns.BSingleton.AEagerInitialization;
 
-import me.kevensouza.maratonajava.ADesignPatterns.BSingleton.A.model.Aircraft;
+import me.kevensouza.maratonajava.ADesignPatterns.BSingleton.AEagerInitialization.model.Aircraft;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Main {
     }
 
     private static void bookSeat(String seat) {
-        Aircraft aircraft = Aircraft.getINSTANCE();
+        Aircraft aircraft = Aircraft.getInstance();
         System.out.println(aircraft.bookSeat(seat));
     }
 }

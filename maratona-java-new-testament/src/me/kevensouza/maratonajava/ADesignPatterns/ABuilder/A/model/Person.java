@@ -10,6 +10,13 @@ public class Person {
         private String email;
         private short age;
 
+        private Builder() {
+        }
+
+        public static Builder aPerson() {
+            return new Builder();
+        }
+
         public Builder name(String name) {
             this.name = name;
             return this;
@@ -27,10 +34,22 @@ public class Person {
 
         public Person build() {
             Person person = new Person();
+            person.name = this.name;
             person.email = this.email;
             person.age = this.age;
-            person.name = this.name;
             return person;
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public short getAge() {
+        return age;
     }
 }
