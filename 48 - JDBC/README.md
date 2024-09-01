@@ -37,3 +37,45 @@ Existem outros gerenciadores de dependencias do java, como o gradle, no maven re
  Além do pom.xml, o maven englobou o diretório dentro de main>java, criou um diretório de testes ao lado de main, e o diretório resources ao lado de java, veja:
 
  ![skaadew](./img/dirstructure.png)
+
+ ## Adicionando Dependencias e conectando com o Banco de Dados
+
+ Pra adicionar um dependência ao projeto com Maven, basta colocar dentro da tag `<dependencies>` do pom.xml uma tag `<dependency>` correspondente a dependência, dessa forma:
+
+ ![alt](./img/mvndependency.png)
+
+ agora só precisa dar um refresh clicando no botão mostrado na imagem abaixo, que o maven será responsável por instalar as dependências do pom.xml para dentro do projeto.
+
+ ![alt](./img/mvnrefresh.png)
+
+ Depois de dar refresh e o maven instalar as dependências, você pode vizualizá-las em `extrenal libraries` do Intellij.
+
+ ![alt](./img/externalfilesidea.png)
+
+ Repare que acima do driver mysql tem outra depêndencia, `google.protobuf`, eis então uma das vantagens de usar um gerenciador de dependencias no projeto. Na maioria das vezes, as dependências tem outras dependências, nas quais você também precisa ter instalada pra que tudo funcione como esperado.
+
+ Se por algum motivo você tiver interesse em saber onde estão os binários das dependências baixadas pelo maven, basta procurar pelo diretório `.m2`, localizado no diretório `$HOME` da sua máquina, independente se seja `Windows ou linux`. Lá estão todos os binários baixados pelo Maven em todos os projetos onde ele foi usado.
+
+ ![alt](./img/m2repository.png)
+
+ ----------
+ 
+ Beleza, agora vamos nos conectar com um banco de dados mysql, com o driver que instalamos com o Maven.
+
+A forma mais simples de se conectar com o mysql é chamando o método `getConnection()` da classe `DriverManager`, fornecer o username e a senha do banco de dados, e uma URL que pode variar dependendo do banco de dados. no caso do mysql, a URL segue esse padrão: `jdbc:mysql://{HOST}:{PORT}/{DATABASE}`. Por fim, basta encapsular o método em um bloco TryCatch e Voilà...
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        try {
+            DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/anime_store",
+                    "kev",
+                    Dotenv.load().get("DB_PASSWORD")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
