@@ -1,17 +1,37 @@
 package me.kevensouza.maratonajava.BJDBC.B.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
-@AllArgsConstructor
 public class Producer {
     private Long id;
     private String name;
-    private Integer age;
+    private Short age;
+    private Set<Anime> animes;
 
-    public Producer(String name, Integer age) {
+    public Producer(String name, Short age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Producer(String name, Short age, Set<Anime> animes) {
+        this.name = name;
+        this.age = age;
+        this.animes = animes;
+    }
+
+    public Producer(Long id, String name, Short age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Producer(Long id, String name, Short age, Set<Anime> animes) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.animes = animes;
     }
 }
