@@ -62,9 +62,10 @@ public class AnimeRepository {
     public static Set<Anime> readAll() {
         String AnimesQuery = "SELECT * FROM anime;";
 
-        String relatedProducersQuery = "SELECT p.* FROM producer p " +
-                "JOIN producer_anime pa ON p.id = pa.producer_id " +
-                "WHERE pa.anime_id = ?;";
+        String relatedProducersQuery = """
+                 SELECT p.* FROM producer p 
+                 JOIN producer_anime pa ON p.id = pa.producer_id 
+                WHERE pa.anime_id = ?;""";
 
         Set<Anime> animes = new HashSet<>();
 
@@ -107,9 +108,10 @@ public class AnimeRepository {
     public static Anime readById(Long id) {
         String animeQuery = "SELECT * FROM anime WHERE id = ?;";
 
-        String relatedProducersQuery = "SELECT p.* FROM producer p " +
-                "JOIN producer_anime pa ON p.id = pa.producer_id " +
-                "WHERE pa.anime_id = ?";
+        String relatedProducersQuery = """
+                 SELECT p.* FROM producer p 
+                 JOIN producer_anime pa ON p.id = pa.producer_id 
+                WHERE pa.anime_id = ?;""";
 
         Anime anime = null;
 
